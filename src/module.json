@@ -34,24 +34,6 @@
       }
     }
   },
-  "packs": [
-    {
-      "name": "apparitions",
-      "label": "Apparitions",
-      "path": "packs/apparitions",
-      "system": "pf2e",
-      "type": "Item"
-    }
-  ],
-  "packFolders": [
-    {
-      "name": "PF2e Apparitions Manager",
-      "sorting": "a",
-      "packs": [
-        "apparitions"
-      ]
-    }
-  ],
   "relationships": {
     "systems": [
       {

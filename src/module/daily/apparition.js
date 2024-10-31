@@ -17,7 +17,7 @@ export const apparitionDaily = [
     items: [
       {
         slug: 'attuned',
-        uuid: 'Compendium.pf2e-playtest-data.war-of-immortals-playtest-class-features.Item.513BswuSPSPQdX1v',
+        uuid: 'Compendium.pf2e.classfeatures.Item.AHMjKkIx21AoMc9W',
         condition: (actor) => getEntriesSpontaneous(actor).length >= 1 && getEntriesFocus(actor).length >= 1,
       },
     ],
@@ -43,7 +43,7 @@ export const apparitionDaily = [
           label: 'First Apparition',
           filter: {
             type: 'feat',
-            search: {},
+            search: { category: ['classfeature'], traits: ['animist'] },
           },
         },
         {
@@ -52,7 +52,7 @@ export const apparitionDaily = [
           label: 'Second Apparition',
           filter: {
             type: 'feat',
-            search: {},
+            search: { category: ['classfeature'], traits: ['animist'] },
           },
         },
         {
@@ -61,7 +61,7 @@ export const apparitionDaily = [
           label: 'Third Apparition',
           filter: {
             type: 'feat',
-            search: {},
+            search: { category: ['classfeature'], traits: ['animist'] },
           },
           condition: hasFeat(actor, 'third-apparition'),
         },
@@ -71,7 +71,7 @@ export const apparitionDaily = [
           label: 'Fourth Apparition',
           filter: {
             type: 'feat',
-            search: {},
+            search: { category: ['classfeature'], traits: ['animist'] },
           },
           condition: hasFeat(actor, 'fourth-apparition'),
         },

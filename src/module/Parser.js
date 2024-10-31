@@ -8,7 +8,7 @@ export class ApparitionParser {
     if (!apparitionItem) return;
 
     //extract the list of spells
-    const regex = new RegExp(`Cantrips?.*@(UUID|Compendium).*\n`);
+    const regex = new RegExp(/Cantrips?.*/g);
     const match = apparitionItem.description.match(regex);
     if (!match) return;
 
@@ -40,10 +40,10 @@ export class ApparitionParser {
     const apparitionItem = await fromUuid(uuid);
     if (!apparitionItem) return;
 
-    const regex = new RegExp(`Vessel Spell.*\n.*@(UUID|Compendium).*\n`);
+    const regex = new RegExp(/Vessel Spell.*/g);
     const match = apparitionItem.description.match(regex);
-    if (!match) return;
 
+    if (!match) return;
     //extract the vessel spell
     const strs = match[0].match(/(@UUID\[Compendium\.|@Compendium\[)(.*?)]({.*?})?/g);
     if (!strs) return;
@@ -63,7 +63,7 @@ export class ApparitionParser {
     if (!apparitionItem) return;
 
     //extract lores
-    const regex = new RegExp(`[a-zA-Z]*\\sLore.*[a-zA-Z]*\\sLore`);
+    const regex = new RegExp(/[a-zA-Z]*\sLore.*[a-zA-Z]*\sLore/g);
     const match = apparitionItem.description.match(regex);
 
     if (!match) return;

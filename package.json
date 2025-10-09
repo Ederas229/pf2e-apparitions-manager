@@ -18,6 +18,8 @@
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "format": "prettier --write \"./**/*.(js|cjs|mjs|json|yml|css)\"",
+    "postinstall": "husky install",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.1.0",

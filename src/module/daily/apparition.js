@@ -98,8 +98,8 @@ export const apparitionDaily = [
         flagPrimary[MODULENAME] = { primary: field == 'first' ? true : false };
         source.flags = foundry.utils.mergeObject(flagDisperse, flagPrimary, { recursive: true });
 
-        const baseLores = await game.modules.get(MODULENAME).api.ApparitionParser.lores(uuid);
-        const lores = baseLores.map((e) => 'Apparition : ' + e);
+        const lores = await game.modules.get(MODULENAME).api.ApparitionParser.lores(uuid);
+
         const flagLore = {};
         flagLore[MODULENAME] = { lores: lores };
         source.flags = foundry.utils.mergeObject(source.flags, flagLore, { recursive: true });

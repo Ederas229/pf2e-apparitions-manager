@@ -139,7 +139,7 @@ export const apparitionDaily = [
           spellSource.system.location.value = entryApparitionId;
           spellSource.system.traits.value.push('Apparition');
           if (!spellSource.system.traits.value.find((e) => e == 'cantrip')) {
-            if (actor.flags[MODULENAME].signatureSpells.includes(spellSource._stats.compendiumSource))
+            if (actor.flags[MODULENAME].signatureSpells?.includes(spellSource._stats.compendiumSource))
               spellSource.system.location.signature = true;
             spellSource.system.location.heightenedLevel = spell.rank;
           }

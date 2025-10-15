@@ -69,6 +69,24 @@ Hooks.on('preCreateChatMessage', async function (message) {
   renderManager(message.actor);
 });
 
+Hooks.on('preUpdateItem', async function (item, modif) {
+  if (modif.system?.location?.signature == undefined) return;
+  if (item.flags[MODULENAME] == undefined) return;
+
+  const actor = item.actor;
+  const spellsArray =
+    actor.flags[MODULENAME].signatureSpells != undefined ? actor.flags[MODULENAME].signatureSpells : [];
+
+  if (modif.system.location.signature) {
+    if (!spellsArray.includes(item.sourceId)) spellsArray.push(item.sourceId);
+  } else {
+    const index = spellsArray.indexOf(item.sourceId);
+    if (index > -1) spellsArray.splice(index, 1);
+  }
+
+  actor.setFlag(MODULENAME, 'signatureSpells', spellsArray);
+});
+
 export async function renderManager(actor) {
   //test if there is already a manager UI stored
   if (managerUi) {

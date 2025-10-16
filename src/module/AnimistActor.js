@@ -52,8 +52,9 @@ export class AnimistActor {
       let dataSloted = {};
       if (!spell.spell.system.traits.value.find((e) => e == 'cantrip')) {
         //set data for the sloted spells
+        let isSignature = this.actor.flags[MODULENAME].signatureSpells?.includes(spell.spell.sourceId);
         dataSloted = {
-          'system.location.signature': true,
+          'system.location.signature': isSignature,
           'system.location.heightenedLevel': spell.rank,
         };
       }

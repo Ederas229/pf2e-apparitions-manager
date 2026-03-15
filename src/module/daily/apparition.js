@@ -91,7 +91,7 @@ export const apparitionDaily = [
           continue;
         }
         const uuid = rows[field].uuid;
-        const source = await game.modules.get('pf2e-dailies')?.api.utils.createFeatSource(uuid);
+        const source = await game.dailies.api.utils.createFeatSource(uuid);
         const flagDisperse = {};
         const flagPrimary = {};
         flagDisperse[MODULENAME] = { dispersed: false };
@@ -117,9 +117,7 @@ export const apparitionDaily = [
         }
 
         for (const i in lores) {
-          const loreSource = game.modules
-            .get('pf2e-dailies')
-            ?.api.utils.createLoreSource({ name: lores[i], rank: loreProf });
+          const loreSource = game.dailies.api.utils.createLoreSource({ name: lores[i], rank: loreProf });
           addItem(loreSource);
         }
 
@@ -132,9 +130,9 @@ export const apparitionDaily = [
             continue;
           }
 
-          const spellSource = await game.modules
-            .get('pf2e-dailies')
-            ?.api.utils.createSpellSource(spell.spell.uuid, { identifier: entryApparitionId });
+          const spellSource = await game.dailies.api.utils.createSpellSource(spell.spell.uuid, {
+            identifier: entryApparitionId,
+          });
 
           spellSource.system.location.value = entryApparitionId;
           spellSource.system.traits.value.push('Apparition');
@@ -151,9 +149,9 @@ export const apparitionDaily = [
         }
 
         const vesselSpell = await game.modules.get(MODULENAME).api.ApparitionParser.vesselSpell(uuid);
-        const vesselSpellSource = await game.modules
-          .get('pf2e-dailies')
-          ?.api.utils.createSpellSource(vesselSpell.uuid, { identifier: entryVesselId });
+        const vesselSpellSource = await game.dailies.api.utils.createSpellSource(vesselSpell.uuid, {
+          identifier: entryVesselId,
+        });
         vesselSpellSource.system.location.value = entryVesselId;
         vesselSpellSource.system.traits.value.push('Vessel');
         addItem(vesselSpellSource);

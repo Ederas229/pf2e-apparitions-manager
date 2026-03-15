@@ -28,7 +28,7 @@ Hooks.once('setup', async () => {
 });
 
 Hooks.once('ready', async () => {
-  game.modules.get('pf2e-dailies')?.api.registerCustomDailies(apparitionDaily);
+  game.dailies.api.registerCustomDailies(apparitionDaily);
 });
 
 Hooks.on('renderCharacterSheetPF2e', async function renderCharacterSheetHook(sheet, html) {

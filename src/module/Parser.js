@@ -62,9 +62,10 @@ export class ApparitionParser {
     const apparitionItem = await fromUuid(uuid);
     if (!apparitionItem) return;
 
+    const skillsText = apparitionItem.description.match(new RegExp(/<strong>Apparition Skills<\/strong>.*$/gm));
     //extract lores
     const regex = new RegExp(/[a-zA-Z]*\sLore.*[a-zA-Z]*\sLore/g);
-    const match = apparitionItem.description.match(regex);
+    const match = skillsText[0].match(regex);
 
     if (!match) return;
 

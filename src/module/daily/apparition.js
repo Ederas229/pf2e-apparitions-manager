@@ -77,7 +77,7 @@ export const apparitionDaily = [
         },
       ];
     },
-    process: async ({ rows, addFeat, addItem, messages, actor, items }) => {
+    process: async ({ rows, addFeat, addItem, addRule, messages, actor, items }) => {
       const entryApparitionId = rows.entrySpontaneous?.value ?? getEntriesSpontaneous(actor)[0].id;
       const entryVesselId = rows.entryFocus?.value ?? getEntriesFocus(actor)[0].id;
       const highestRank = actor.spellcasting.collections.get(entryApparitionId).highestRank;
@@ -117,8 +117,13 @@ export const apparitionDaily = [
         }
 
         for (const i in lores) {
-          const loreSource = game.dailies.api.utils.createLoreSource({ name: lores[i], rank: loreProf });
-          addItem(loreSource);
+          const loreSource = game.dailies.api.utils.createLoreRuleElement({
+            slug: lores[i],
+            label: lores[i],
+            rank: loreProf,
+          });
+
+          addRule(items.attuned, loreSource);
         }
 
         const spells = await game.modules.get(MODULENAME).api.ApparitionParser.spell(uuid, highestRank);

@@ -201,10 +201,9 @@ export class AnimistActor {
           continue;
         }
 
-        html
-          .find('[value="' + lore + '"]')
-          .parent()
-          .hide();
+        const slug = lore.toLowerCase().replaceAll(' ', '-');
+
+        html.find('[data-statistic="' + slug + '"]').hide();
       }
     }
   }
